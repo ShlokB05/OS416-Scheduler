@@ -28,8 +28,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ucontext.h>
+#include <signal.h>
 
 typedef uint worker_t;
+typedef enum {RUNNING, READY, BLOCKED, SUSPENDED} status;
 
 
 typedef struct TCB {
@@ -42,12 +44,13 @@ typedef struct TCB {
 	// And more ...
 
 	// YOUR CODE HERE
-	int ThreadID; // use 
+	worker_t ThreadID; // use 
 	void *stack; 
-	enum ThreadStatus{RUNNING, READY, BLOCKED, SUSPENDED} CurrThreadState;
+	status CurrThreadState;
 	ucontext_t threadCtx;
 	int priority;
 	double elapsed;
+	struct TCB *next; //if you are doing a LL implementation, otherwise ignore/delete;
 } tcb; 
 
 
