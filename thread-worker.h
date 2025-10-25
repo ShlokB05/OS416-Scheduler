@@ -59,6 +59,13 @@ typedef struct TCB {
 /* mutex struct definition */
 typedef struct worker_mutex_t {
 	/* add something here */
+int workerId; 
+	bool IsLocked;
+	tcb *user;
+	Queue *q; 
+	/* add something here */
+
+	// YOUR CODE HERE
 
 	// YOUR CODE HERE
 
