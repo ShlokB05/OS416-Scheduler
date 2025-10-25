@@ -51,6 +51,8 @@ typedef struct TCB {
 	int priority;
 	double elapsed;
 	struct TCB *next; //if you are doing a LL implementation, otherwise ignore/delete;
+	void *ptrValue;
+	int quantumsRanFor;
 } tcb; 
 
 
