@@ -30,6 +30,8 @@
 
 typedef uint worker_t;
 
+typedef enum {RUNNING, READY, BLOCKED, SUSPENDED, WAITING_FOR_MUTEX} status;
+
 typedef struct TCB {
 	/* add important states in a thread control block */
 	// thread Id
@@ -40,10 +42,23 @@ typedef struct TCB {
 	// And more ...
 
 	// YOUR CODE HERE
+worker_t ThreadID; // use 
+	void *stack;  //set it up later with malloc
+	status CurrThreadState;
+	ucontext_t threadCtx;
+	int priority;
+	struct TCB *next; 
+	void *ptrValue;
+	int quantumsRanFor;
 } tcb; 
 
 /* mutex struct definition */
 typedef struct worker_mutex_t {
+
+int workerId; 
+	bool IsLocked;
+	tcb *user;
+	Queue *q; 
 	/* add something here */
 
 	// YOUR CODE HERE
